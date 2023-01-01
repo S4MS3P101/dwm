@@ -62,6 +62,15 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "urxvt", NULL };
 static const char *web[]      = { "firefox-esr", NULL };
 
+/* volume keys */
+static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+ 
+/* backlight */
+static const char *brightnessup[] = { "sudo", "xbacklight", "-inc", "5", NULL };
+static const char *brightnessdown[] = { "sudo", "xbacklight", "-dec", "5", NULL }; 
+
 #include "shiftview.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -94,6 +103,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0 } },
 	{ MODKEY,                       XK_n,      shiftview,      {.i = +1 } },
 	{ MODKEY,                       XK_p,      shiftview,      {.i = -1 } },
+	{ 0,                            XK_F3,     spawn,          {.v = upvol } },
+	{ 0,                            XK_F2,     spawn,          {.v = downvol } },
+	{ 0,                            XK_F1,     spawn,          {.v = mutevol } },
+	{ 0,                            XK_F4,     spawn,          {.v = brightnessdown } },
+	{ 0,                            XK_F5,     spawn,          {.v = brightnessup } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
