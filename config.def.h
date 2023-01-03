@@ -6,8 +6,8 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono:size=8"};
-static const char dmenufont[]       = "JetBrains Mono:size=8";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=8", "JoyPixels:size=8"};
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=8";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -29,7 +29,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "firefox",  NULL,       "About Mozilla Firefox",       0,       1,           -1 },
 };
 
 /* layout(s) */
@@ -60,17 +61,18 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
-static const char *web[]      = { "firefox-esr", NULL };
+static const char *web[]      = { "firefox", NULL };
 
-/* volume keys */
-static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
-static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+/* volume */
+static const char *upvol[]   = { "pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char *downvol[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *mutevol[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
  
 /* backlight */
-static const char *brightnessup[] = { "sudo", "xbacklight", "-inc", "5", NULL };
-static const char *brightnessdown[] = { "sudo", "xbacklight", "-dec", "5", NULL }; 
+static const char *brightnessup[]   = { "xbacklight", "-inc", "5", NULL };
+static const char *brightnessdown[] = { "xbacklight", "-dec", "5", NULL }; 
 
+#include <X11/XF86keysym.h>
 #include "shiftview.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -103,11 +105,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0 } },
 	{ MODKEY,                       XK_n,      shiftview,      {.i = +1 } },
 	{ MODKEY,                       XK_p,      shiftview,      {.i = -1 } },
-	{ 0,                            XK_F3,     spawn,          {.v = upvol } },
-	{ 0,                            XK_F2,     spawn,          {.v = downvol } },
-	{ 0,                            XK_F1,     spawn,          {.v = mutevol } },
-	{ 0,                            XK_F4,     spawn,          {.v = brightnessdown } },
-	{ 0,                            XK_F5,     spawn,          {.v = brightnessup } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -118,6 +115,15 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+
+/* Volume and Brightness control */
+
+	{ 0,              XF86XK_AudioRaiseVolume,	 spawn,          {.v = upvol } },
+	{ 0,              XF86XK_AudioLowerVolume,	 spawn,		 {.v = downvol } },
+	{ 0,              XF86XK_AudioMute, 		 spawn,		 {.v = mutevol } },
+	{ 0,              XF86XK_MonBrightnessUp,        spawn,          {.v = brightnessup } },
+	{ 0,              XF86XK_MonBrightnessDown,      spawn,          {.v = brightnessdown } },
+
 };
 
 /* button definitions */
