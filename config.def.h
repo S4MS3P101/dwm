@@ -8,19 +8,20 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=8", "JoyPixels:size=8"};
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=8";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#282828";
-static const char col_cyan[]        = "#689d6a";
+static const char norm_bgcolor[]    = "#282828";
+static const char norm_bcolor[]     = "#444444";
+static const char norm_fgcolor[]    = "#ebdbb2";
+static const char sel_fgcolor[]     = "#282828";
+static const char sel_bcolor[]      = "#689d6a";
+static const char sel_bgcolor[]     = "#689d6a";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	/*               fg            bg            border   */
+	[SchemeNorm] = { norm_fgcolor, norm_bgcolor, norm_bcolor },
+	[SchemeSel]  = { sel_fgcolor, sel_bgcolor, sel_bcolor },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -29,7 +30,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "firefox",  NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "firefox",  NULL,       "About Mozilla Firefox",       0,       1,           -1 },
 };
 
@@ -59,7 +60,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bgcolor, "-nf", norm_fgcolor, "-sb", sel_bgcolor, "-sf", sel_fgcolor, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 static const char *web[]      = { "firefox", NULL };
 
