@@ -65,9 +65,9 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *web[]      = { "firefox", NULL };
 
 /* volume */
-static const char *upvol[]   = { "pactl", "set-sink-volume", "0", "+5%", NULL };
-static const char *downvol[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
-static const char *mutevol[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", NULL };
+static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", NULL };
+static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
  
 /* backlight */
 static const char *brightnessup[]   = { "xbacklight", "-inc", "5", NULL };
