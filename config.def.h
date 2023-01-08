@@ -6,14 +6,14 @@ static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=8", "JoyPixels:size=8"};
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=8";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10", "JoyPixels:size=10"};
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=10";
 static const char norm_bgcolor[]    = "#282828";
 static const char norm_bcolor[]     = "#444444";
 static const char norm_fgcolor[]    = "#ebdbb2";
 static const char sel_fgcolor[]     = "#282828";
-static const char sel_bcolor[]      = "#a8a897";
-static const char sel_bgcolor[]     = "#a8a897";
+static const char sel_bcolor[]      = "#8ec07c";
+static const char sel_bgcolor[]     = "#8ec07c";
 static const char *colors[][3]      = {
 	/*               fg            bg            border   */
 	[SchemeNorm] = { norm_fgcolor, norm_bgcolor, norm_bcolor },
@@ -21,17 +21,19 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "firefox",  NULL,       "About Mozilla Firefox",       0,       1,           -1 },
+	/* class         instance      title    tags mask    isfloating     monitor */
+	{ "Gimp",         NULL,        NULL,       0,            1,           -1 },
+	{ "KeePassXC",    NULL,        NULL,       1 << 4,       0,           -1 },
+	{ "thunderbird",  NULL,        NULL,       1 << 3,       1,           -1 },
+	{ "LibreWolf",    NULL,        NULL,       1 << 1,       0,           -1 },
+	{ "LibreWolf",    NULL,       "About LibreWolf",         0,       1,           -1 },
 };
 
 /* layout(s) */
@@ -62,7 +64,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bgcolor, "-nf", norm_fgcolor, "-sb", sel_bgcolor, "-sf", sel_fgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *web[]      = { "firefox", NULL };
+static const char *web[]      = { "librewolf", NULL };
+static const char *files[]    = { "nemo", NULL };
 
 /* volume */
 static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", NULL };
@@ -70,8 +73,8 @@ static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", NULL };
 static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
  
 /* backlight */
-static const char *brightnessup[]   = { "xbacklight", "-inc", "5", NULL };
-static const char *brightnessdown[] = { "xbacklight", "-dec", "5", NULL }; 
+static const char *brightnessup[]   = { "brightnessctl", "set", "5%+", NULL };
+static const char *brightnessdown[] = { "brightnessctl", "set", "5%-", NULL };
 
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
@@ -80,6 +83,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
         { MODKEY,                       XK_w,      spawn,          {.v = web } },
+        { MODKEY,                       XK_e,      spawn,          {.v = files } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
