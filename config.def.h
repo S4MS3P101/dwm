@@ -65,7 +65,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bgcolor, "-nf", norm_fgcolor, "-sb", sel_bgcolor, "-sf", sel_fgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *web[]      = { "librewolf", NULL };
-static const char *files[]    = { "nemo", NULL };
+static const char *files[]    = { "pcmanfm", NULL };
 
 /* volume */
 static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", NULL };
