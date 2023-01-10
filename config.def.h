@@ -11,9 +11,9 @@ static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=10";
 static const char norm_bgcolor[]    = "#282828";
 static const char norm_bcolor[]     = "#444444";
 static const char norm_fgcolor[]    = "#ebdbb2";
-static const char sel_fgcolor[]     = "#282828";
+static const char sel_fgcolor[]     = "#ebdbb2";
 static const char sel_bcolor[]      = "#cc241d";
-static const char sel_bgcolor[]     = "#98971a";
+static const char sel_bgcolor[]     = "#444444";
 static const char *colors[][3]      = {
 	/*               fg            bg            border   */
 	[SchemeNorm] = { norm_fgcolor, norm_bgcolor, norm_bcolor },
@@ -21,7 +21,15 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "" };
+
+static const char *tagsel[][2] = {
+	{ "#282828", "#cc241d" },
+	{ "#282828", "#98971a" },
+	{ "#282828", "#d79921" },
+	{ "#282828", "#458588" },
+	{ "#282828", "#b16286" },
+	};
 
 static const Rule rules[] = {
 	/* xprop(1):
