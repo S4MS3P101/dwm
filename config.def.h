@@ -9,12 +9,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10", "JoyPixels:size=10"};
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=10";
-static const char norm_bgcolor[]    = "#282828";
+static const char norm_bgcolor[]    = "#1d2021";
 static const char norm_bcolor[]     = "#444444";
-static const char norm_fgcolor[]    = "#ebdbb2";
-static const char sel_fgcolor[]     = "#ebdbb2";
+static const char norm_fgcolor[]    = "#928374";
+static const char sel_fgcolor[]     = "#928374";
 static const char sel_bcolor[]      = "#cc241d";
-static const char sel_bgcolor[]     = "#444444";
+static const char sel_bgcolor[]     = "#282828";
 static const char *colors[][3]      = {
 	/*               fg            bg            border   */
 	[SchemeNorm] = { norm_fgcolor, norm_bgcolor, norm_bcolor },
@@ -25,11 +25,11 @@ static const char *colors[][3]      = {
 static const char *tags[] = { "", "", "", "", "" };
 
 static const char *tagsel[][2] = {
-	{ "#282828", "#cc241d" },
-	{ "#282828", "#98971a" },
-	{ "#282828", "#d79921" },
-	{ "#282828", "#458588" },
-	{ "#282828", "#b16286" },
+	{ "#83a598", "#1d2021" },
+	{ "#fb4934", "#1d2021" },
+	{ "#d3869b", "#1d2021" },
+	{ "#8ec07c", "#1d2021" },
+	{ "#b8bb26", "#1d2021" },
 	};
 
 static const Rule rules[] = {
