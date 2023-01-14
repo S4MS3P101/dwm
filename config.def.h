@@ -25,11 +25,11 @@ static const char *colors[][3]      = {
 static const char *tags[] = { "", "", "", "", "" };
 
 static const char *tagsel[][2] = {
-	{ "#076678", "#1d2021" },
-	{ "#9d0006", "#1d2021" },
-	{ "#8f3f71", "#1d2021" },
-	{ "#689d6a", "#1d2021" },
-	{ "#79740e", "#1d2021" },
+	{ "#1d2021", "#076678" },
+	{ "#1d2021", "#d65d0e" },
+	{ "#1d2021", "#8f3f71" },
+	{ "#1d2021", "#689d6a" },
+	{ "#1d2021", "#79740e" },
 	};
 
 static const Rule rules[] = {
@@ -78,6 +78,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *web[]      = { "librewolf", NULL };
 static const char *files[]    = { "pcmanfm", NULL };
+static const char *lock[]     = { "slock", NULL };
 
 /* volume */
 static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", NULL };
@@ -96,6 +97,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
         { MODKEY,                       XK_w,      spawn,          {.v = web } },
         { MODKEY,                       XK_e,      spawn,          {.v = files } },
+        { MODKEY,                       XK_l,      spawn,          {.v = lock } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
