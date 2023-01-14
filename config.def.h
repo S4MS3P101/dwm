@@ -11,10 +11,10 @@ static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10", "JoyP
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=10";
 static const char norm_bgcolor[]    = "#1d2021";
 static const char norm_bcolor[]     = "#444444";
-static const char norm_fgcolor[]    = "#928374";
-static const char sel_fgcolor[]     = "#928374";
-static const char sel_bcolor[]      = "#cc241d";
-static const char sel_bgcolor[]     = "#282828";
+static const char norm_fgcolor[]    = "#7c6f64";
+static const char sel_fgcolor[]     = "#bdae93";
+static const char sel_bcolor[]      = "#9d0006";
+static const char sel_bgcolor[]     = "#3c3836";
 static const char *colors[][3]      = {
 	/*               fg            bg            border   */
 	[SchemeNorm] = { norm_fgcolor, norm_bgcolor, norm_bcolor },
@@ -25,11 +25,11 @@ static const char *colors[][3]      = {
 static const char *tags[] = { "", "", "", "", "" };
 
 static const char *tagsel[][2] = {
-	{ "#83a598", "#1d2021" },
-	{ "#fb4934", "#1d2021" },
-	{ "#d3869b", "#1d2021" },
-	{ "#8ec07c", "#1d2021" },
-	{ "#b8bb26", "#1d2021" },
+	{ "#076678", "#1d2021" },
+	{ "#9d0006", "#1d2021" },
+	{ "#8f3f71", "#1d2021" },
+	{ "#689d6a", "#1d2021" },
+	{ "#79740e", "#1d2021" },
 	};
 
 static const Rule rules[] = {
@@ -74,7 +74,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bgcolor, "-nf", norm_fgcolor, "-sb", sel_bgcolor, "-sf", sel_fgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *web[]      = { "librewolf", NULL };
 static const char *files[]    = { "pcmanfm", NULL };
