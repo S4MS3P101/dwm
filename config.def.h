@@ -44,7 +44,7 @@ static const Rule rules[] = {
 	{ "LibreWolf",      NULL,    	 NULL,          	 1 << 1,    0,          0,           0,        -1 },
 	{ "st-256color",    NULL,    	 NULL,          	 0,         0,          1,           0,        -1 },
 	{ NULL,     	    NULL,    	 "Event Tester",	 0,         0,          0,           1,        -1 }, /* xev */
-	{ "LibreWolf",      NULL,    	 "About LibreWolf",	 0,         0,          0,           0,        -1 },
+	{ "LibreWolf",      NULL,    	 "About LibreWolf",	 0,         1,          0,           0,        -1 },
 
 };
 
