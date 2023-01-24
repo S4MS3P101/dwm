@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 10;        /* gaps between windows */
+static const unsigned int gappx     = 10;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -29,7 +29,7 @@ static const char *tagsel[][2] = {
 	{ "#d65d0e", "#1d2021" },
 	{ "#8f3f71", "#1d2021" },
 	{ "#689d6a", "#1d2021" },
-	{ "#79740e", "#1d2021" },
+	{ "#d79921", "#1d2021" },
 	};
 
 static const Rule rules[] = {
